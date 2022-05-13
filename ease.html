@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Budget Plan</title>
+	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body style="background-color: antiquewhite;text-align: center;">
+<h1 style="color:brown;text-align: center;">Budget Planning</h1>
+<br>
+<br>
+<br>
+<center>
+        <div class="row">
+            <div class=" col-md-9">
+		<table border="4">
+			<thead>
+				<tr>
+					<th>Profession Deal</th>
+					<td><input type="text" name="pd" id="pd" placeholder="Enter Budget Name"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Budget of Deal</th>
+					<td><input type="text" name="bd" id="bd" placeholder="Enter Amount"></td>
+				</tr>
+        
+				<tr id="btna">
+					<td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow()"></td>
+				</tr>
+                <tr id="btna">
+					<td colspan="2"><input type="button" name="button" id="btn1" value="Total " onclick="total()"></td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+</div>
+</center>
+
+<center>
+    <div class="row">
+    <div class="col-md-4 mb-3">
+		<table border="4" id="show">
+			<thead>
+				<tr>
+					<th>Profession Deal</th>
+					<th>Budget Deal</th>
+				</tr>
+			</thead>
+		</table>
+    </div>
+	<div class="col-md-4 mb-3">
+    <table border="5" id="show1">
+        <thead>
+            <tr>
+                <th>Total Budget</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+</center>
+	<script>
+		
+		var list1 = [];
+		var list2 = [];
+
+		var n = 1;
+		var x = 0;
+
+		function AddRow(){
+            
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
+           
+           
+			list1[x] = document.getElementById("pd").value;
+			list2[x] = document.getElementById("bd").value;
+            
+			var cel1 = NewRow.insertCell(0);
+			var cel2 = NewRow.insertCell(1);
+            cel1.innerHTML = list1[x];
+			cel2.innerHTML = list2[x];
+			n++;
+			x++;
+		}
+
+        function total(){
+            var totaldown=document.getElementById('show1');
+            var totalrow=totaldown.insertRow(1);
+            total=0;
+            for(var i=0;i<list2.length;i++){
+                var n=parseInt(list2[i]);
+                total+=n;
+            }
+            var cel3=totalrow.insertCell(0);
+			
+            cel3.innerHTML=total;
+
+        }
+
+	</script>
+</body>
+</html>
